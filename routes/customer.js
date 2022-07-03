@@ -3,7 +3,7 @@ var router = express.Router();
 var connection  = require('../lib/db');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-connection.query('SELECT * FROM customer_list_tb ORDER BY id desc',function(err,rows)     {
+connection.query('SELECT * FROM customer_list_tb ORDER BY Id desc',function(err,rows)     {
 if(err){
 req.flash('error', err); 
 res.render('customers',{page_title:"Customers - Node.js",data:''});   
@@ -66,7 +66,7 @@ email: req.body.email
 })
 // SHOW EDIT USER FORM
 router.get('/edit/(:id)', function(req, res, next){
-connection.query('SELECT * FROM customer_list_tb WHERE id = ' + req.params.id, function(err, rows, fields) {
+connection.query('SELECT * FROM customer_list_tb WHERE Id = ' + req.params.id, function(err, rows, fields) {
 if(err) throw err
 // if user not found
 if (rows.length <= 0) {
